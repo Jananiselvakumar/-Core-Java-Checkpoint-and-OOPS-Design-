@@ -48,7 +48,7 @@ class ContractEmployee extends Employee {
     }
 }
 
-public class Main {
+public class Employee-Salary-Processing {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
