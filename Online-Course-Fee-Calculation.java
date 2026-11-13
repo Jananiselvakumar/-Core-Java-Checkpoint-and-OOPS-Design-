@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+abstract class Course {
+    double courseFee;
+
+    Course(double fee) {
+        courseFee = fee;
+    }
+
+    abstract double calculateDiscount();
+
+    abstract String getCourseType();
+
+    double calculateFinalFee() {
+        return courseFee - calculateDiscount();
+    }
+}
+
+class ProgrammingCourse extends Course {
+    ProgrammingCourse(double fee) {
+        super(fee);
+    }
+
+    double calculateDiscount() {
+        return courseFee * 10 / 100;
+    }
+
+    String getCourseType() {
+        return "Programming";
+    }
+}
+
+class DataScienceCourse extends Course {
+    DataScienceCourse(double fee) {
+        super(fee);
+    }
+
+    double calculateDiscount() {
+        return courseFee * 15 / 100;
+    }
+
+    String getCourseType() {
+        return "Data Science";
+    }
+}
+
+class CloudCourse extends Course {
+    CloudCourse(double fee) {
+        super(fee);
+    }
+
+    double calculateDiscount() {
+        return courseFee * 5 / 100;
+    }
+
+    String getCourseType() {
+        return "Cloud";
+    }
+}
+
+public class Online-Course-Fee-Calculation {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int type = sc.nextInt();
+        double fee = sc.nextDouble();
+
+        Course c;
+
+        if (type == 1) {
+            c = new ProgrammingCourse(fee);
+        } else if (type == 2) {
+            c = new DataScienceCourse(fee);
+        } else {
+            c = new CloudCourse(fee);
+        }
+
+        System.out.println("Course Type: " + c.getCourseType());
+        System.out.printf("Discount: %.2f%n", c.calculateDiscount());
+        System.out.printf("Final Fee: %.2f%n", c.calculateFinalFee());
+
+        sc.close();
+    }
+}
